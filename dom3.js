@@ -15,6 +15,7 @@ function addItem(e){
 
   // Get input value
   var newItem = document.getElementById('item').value;
+  var newdis=document.getElementById('itemdis').value;
 
   // Create new li element
   var li = document.createElement('li');
@@ -22,19 +23,24 @@ function addItem(e){
   li.className = 'list-group-item';
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(newdis));
+  
+
 
   // Create del button element
   var deleteBtn = document.createElement('button');
-  
+  var editBtn=document.createElement('button');
 
   // Add classes to del button
   deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
-'
-  // Append text node
+  editBtn.className='editl';
+
+
   deleteBtn.appendChild(document.createTextNode('X'));
-  
+  editBtn.appendChild(document.createTextNode('edit'));
   // Append button to li
   li.appendChild(deleteBtn);
+  li.appendChild(editBtn);
   
   // Append li to list
   itemList.appendChild(li);
@@ -56,6 +62,7 @@ function filterItems(e){
   var text = e.target.value.toLowerCase();
   // Get lis
   var items = itemList.getElementsByTagName('li');
+  
   // Convert to an array
   Array.from(items).forEach(function(item){
     var itemName = item.firstChild.textContent;
@@ -64,5 +71,17 @@ function filterItems(e){
     } else {
       item.style.display = 'none';
     }
-  });
+  }
+  )
+   Array.from(items).forEach(function(itemdis){
+    var itemdis = itemdis.firstChild.textContent;
+    if(itemdis.toLowerCase().indexOf(text) != -1){
+      itemdis.style.display = 'block';
+    } else {
+      itemdis.style.display = 'none';
+    }
 }
+   )
+}
+
+console.log(document.childNodes('li'));
