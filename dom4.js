@@ -30,16 +30,20 @@ function onSubmit(e) {
     // Append to ul
     userList.appendChild(li);
 
-    localStorage.setItem('name',nameInput.value);
-    localStorage.setItem('mail',email.value);
+    //localStorage.setItem('name',nameInput.value);
+    //localStorage.setItem('mail',email.value);
+
+var myObj={
+    name1: nameInput.value,
+    email1:emailInput.value
+}
+ 
+   arr.push(myObj);
+   localStorage.getItem('userdetails'.JSON.stringify(arr));
+   const p=JSON.parse(localStorage.getItem('userdetails'));
 
 
-    let myObj={
-        nameInput:'ankita',
-        email:'ankitaajbsk@ddgfosi'
-    };
 
-    localStorage.setItem('myObj',myObj);
 
 
     // Clear fields
